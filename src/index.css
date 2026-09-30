@@ -538,72 +538,7 @@ h1, h2, h3, p, dl { margin: 0; }
 /* Responsividade */
 
 @media (max-width: 860px) {
-   .hero {
-    display: grid;
-    grid-template-columns: 64px 1fr;
-    grid-template-areas:
-      "avatar eyebrow"
-      "name   name"
-      "role   role"
-      "intro  intro"
-      "cta    cta";
-    column-gap: 16px;
-    row-gap: 4px;
-    padding: 48px 20px 56px;
-  }
-
-  /* "abre" o wrapper pra virar itens diretos do grid */
-  .hero-text { display: contents; }
-
-  .hero-photo {
-    grid-area: avatar;
-    width: 64px;
-    align-self: center;
-  }
-  .hero-photo-frame {
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-  }
-  .hero-photo-frame img {
-    object-position: center;
-    filter: none;
-  }
-
-  .hero-text .eyebrow {
-    grid-area: eyebrow;
-    align-self: center;
-    margin-bottom: 0;
-  }
-  .hero-name {
-    grid-area: name;
-    margin-top: 20px;
-    margin-bottom: 8px;
-    font-size: clamp(38px, 11vw, 48px);
-  }
-  .hero-role {
-    grid-area: role;
-    margin-bottom: 0;
-    font-size: 16.5px;
-  }
-  .hero-intro {
-    grid-area: intro;
-    margin-top: 20px;
-    font-size: 17.5px;
-  }
-  .hero-cta {
-    grid-area: cta;
-    margin-top: 4px;
-  }
-  .about-grid { grid-template-columns: 1fr; }
-  .fact-list { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 20px; }
-  .project-grid { grid-template-columns: 1fr; }
-  .skills-grid { grid-template-columns: 1fr; }
-  .contact-links { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 860px) {
-   .hero {
-    display: grid;
+  .hero {
     grid-template-columns: 64px 1fr;
     grid-template-areas:
       "avatar eyebrow"
@@ -616,50 +551,24 @@ h1, h2, h3, p, dl { margin: 0; }
     padding: 48px 20px 56px;
   }
 
-  /* "abre" o wrapper pra virar itens diretos do grid */
   .hero-text { display: contents; }
 
-  .hero-photo {
-    grid-area: avatar;
-    width: 64px;
-    align-self: center;
-  }
-  .hero-photo-frame {
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-  }
-  .hero-photo-frame img {
-    object-position: center;
-    filter: none;
-  }
+  .hero-photo { grid-area: avatar; width: 64px; align-self: center; }
+  .hero-photo-frame { aspect-ratio: 1 / 1; border-radius: 50%; }
+  .hero-photo-frame img { object-position: center; filter: none; }
 
-  .hero-text .eyebrow {
-    grid-area: eyebrow;
-    align-self: end;
-    margin-bottom: 2px;
-  }
-  .hero-role {
-    grid-area: role;
-    align-self: start;
-    margin-bottom: 0;
-  }
-  .hero-name {
-    grid-area: name;
-    margin-top: 22px;
-  }
-  .hero-intro {
-    grid-area: intro;
-    margin-top: 14px;
-  }
-  .hero-cta {
-    grid-area: cta;
-    margin-top: 4px;
-  }
-  .about-grid { grid-template-columns: 1fr; }
-  .fact-list { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 20px; }
-  .project-grid { grid-template-columns: 1fr; }
-  .skills-grid { grid-template-columns: 1fr; }
+  .hero-text .eyebrow { grid-area: eyebrow; align-self: end; margin-bottom: 2px; }
+  .hero-role { grid-area: role; align-self: start; margin-bottom: 0; font-size: 16.5px; }
+  .hero-name { grid-area: name; margin-top: 22px; margin-bottom: 8px; font-size: clamp(38px, 11vw, 48px); }
+  .hero-intro { grid-area: intro; margin-top: 14px; font-size: 17.5px; }
+  .hero-cta { grid-area: cta; margin-top: 4px; }
+
+  .about-grid,
+  .project-grid,
+  .skills-grid,
   .contact-links { grid-template-columns: 1fr; }
+
+  .fact-list { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 20px; }
 }
 
 @media (max-width: 760px) {

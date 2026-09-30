@@ -2,7 +2,7 @@
 
 ## Sobre o projeto
 
-Site pessoal em formato *single page*, com navegação por âncoras entre as seções. Foi pensado para ser simples de manter (sem build, sem dependências, sem framework) e fácil de estender conforme novos projetos e experiências forem surgindo.
+Site pessoal em formato *single page*, com navegação por âncoras entre as seções. Construído com React e TypeScript, com o conteúdo separado em componentes e em um arquivo de traduções, o que facilita adicionar novos projetos, experiências e idiomas.
 
 ### Seções
 
@@ -15,47 +15,73 @@ Site pessoal em formato *single page*, com navegação por âncoras entre as se�
 
 ### Funcionalidades
 
-- **Bilíngue (PT/EN)** — botão de toggle no estilo terminal (`$ lang=pt`) que traduz o conteúdo da página via JavaScript, sem recarregar. O idioma escolhido fica salvo no `localStorage`.
+- **Bilíngue (PT/EN)** — botão de toggle no estilo terminal (`$ lang=pt`) que troca o idioma da página sem recarregar. O idioma escolhido fica salvo no `localStorage`.
 - **Responsivo** — layout adaptado para desktop, tablet e mobile, com menu hambúrguer nas telas menores.
+- **Animações de entrada** — elementos aparecem conforme o scroll usando `IntersectionObserver`.
 - **Acessibilidade** — foco visível no teclado e respeito à preferência `prefers-reduced-motion`.
 - **Design system próprio** — paleta, tipografia (Fraunces + Inter + IBM Plex Mono) e componentes consistentes em todo o site.
 
 ## Tecnologias
 
-- HTML5 semântico
+- React
+- TypeScript
+- Vite
 - CSS3 (custom properties, grid, flexbox)
-- JavaScript puro (sem frameworks ou bibliotecas)
 - Google Fonts
 
 ## Estrutura do repositório
 
 ```
-Portfolio-Web/
-├── index.html            # Estrutura e conteúdo (PT/EN via data-i18n)
-├── styles.css            # Design system e estilos
-├── script.js             # Toggle de idioma, menu mobile, ano do rodapé
-├── assets/
-│   └── davi.png          # Foto de perfil
-│   └── logo.svg          # Favicon
+portfolio/
+├── public/
+│   └── assets/
+│       ├── davi.png          # Foto de perfil
+│       └── logo.svg          # Favicon
+├── src/
+│   ├── components/
+│   │   ├── Header.tsx        # Navegação, toggle de idioma e menu mobile
+│   │   ├── Hero.tsx
+│   │   ├── About.tsx
+│   │   ├── Experience.tsx
+│   │   ├── Projects.tsx
+│   │   ├── Skills.tsx
+│   │   ├── Contact.tsx
+│   │   └── Footer.tsx
+│   ├── data/
+│   │   └── translations.ts   # Textos em PT/EN
+│   ├── App.tsx               # Estado de idioma e animações de scroll
+│   ├── main.tsx
+│   └── index.css             # Design system e estilos
+├── index.html
+├── vite.config.ts
+├── package.json
 └── README.md
 ```
 
 ## Como rodar localmente
 
-Por ser um site 100% estático, basta abrir o `index.html` no navegador — ou, para evitar problemas com caminhos relativos, servir a pasta com um servidor simples:
+Pré-requisito: [Node.js](https://nodejs.org/) 18 ou superior.
 
 ```bash
-# Python
-python3 -m http.server 8080
+# instalar dependências
+npm install
 
-# ou VS Code: extensão "Live Server"
+# iniciar o servidor de desenvolvimento
+npm run dev
 ```
 
-Depois acesse `http://localhost:8080`.
+Depois acesse `http://localhost:5173`.
+
+Para gerar a versão de produção e visualizá-la localmente:
+
+```bash
+npm run build
+npm run preview
+```
 
 ## Deploy
 
-O site é publicado via **GitHub Pages** a partir da branch `main`, na raiz do repositório.
+O site é publicado via **GitHub Pages**. O build de produção (`npm run build`) gera a pasta `dist/`, que é o conteúdo publicado.
 
 ## Contato
 

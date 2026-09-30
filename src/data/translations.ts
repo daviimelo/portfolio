@@ -1,4 +1,6 @@
-const translations = {
+export type Language = 'pt' | 'en';
+
+export const translations: Record<Language, Record<string, string>> = {
   pt: {
     "nav.about": "Sobre",
     "nav.experience": "Experiência",
@@ -7,14 +9,14 @@ const translations = {
     "nav.contact": "Contato",
 
     "hero.eyebrow": "// olá, eu sou",
-    "hero.role": "Desenvolvedor Mobile & Software",
+    "hero.role": "Desenvolvedor Full Stack",
     "hero.intro": "Estudante de Análise e Desenvolvimento de Sistemas no IFPB, construindo aplicações mobile e web do design ao deploy — com Java, React Native e boas práticas de arquitetura.",
     "hero.cta1": "Ver projetos",
     "hero.cta2": "Falar comigo",
 
     "about.eyebrow": "// sobre",
     "about.title": "Quem escreve este código",
-    "about.text": "Tenho 18 anos, sou de João Pessoa (PB) e curso Análise e Desenvolvimento de Sistemas no IFPB Campus Santa Rita. Dedico boa parte dos meus estudos ao ecossistema Java, mas transito bem por Python, desenvolvimento web e mobile com React Native. Atuo em projetos de extensão e inovação com metodologias ágeis, e gosto de entender o que está por trás do código: arquitetura limpa, princípios SOLID e software que envelhece bem.",
+    "about.text": "Sou de João Pessoa (PB) e curso Análise e Desenvolvimento de Sistemas no IFPB Campus Santa Rita. Dedico boa parte dos meus estudos ao ecossistema Java, mas também transito por Python, desenvolvimento web e mobile com React Native. Atuo em projetos de extensão e inovação com metodologias ágeis e gosto de entender o que está por trás do código: arquitetura limpa, princípios SOLID e software que envelhece bem.",
     "about.fact1.label": "Localização",
     "about.fact1.value": "João Pessoa, PB — Brasil",
     "about.fact2.label": "Formação",
@@ -59,9 +61,9 @@ const translations = {
 
     "contact.eyebrow": "@ contato",
     "contact.title": "Vamos conversar?",
-    "contact.text": "Estou buscando novas oportunidades na área. Se você tem um projeto, uma vaga ou só quer trocar uma ideia sobre Java e React Native, me chama.",
+    "contact.text": "Estou buscando novas oportunidades na área. Se você tem um projeto, uma vaga ou só quer trocar uma ideia sobre Java e React Native, fale comigo.",
 
-    "footer.note": "Feito com HTML, CSS e JS — sem frameworks."
+    "footer.note": "Desenvolvido com React, TypeScript e Vite."
   },
 
   en: {
@@ -72,14 +74,14 @@ const translations = {
     "nav.contact": "Contact",
 
     "hero.eyebrow": "// hi, i'm",
-    "hero.role": "Mobile & Software Developer",
+    "hero.role": "Full Stack Developer",
     "hero.intro": "Computer Systems Analysis and Development student at IFPB, building mobile and web applications from design to deploy — with Java, React Native and solid architecture practices.",
     "hero.cta1": "View projects",
     "hero.cta2": "Get in touch",
 
     "about.eyebrow": "// about",
     "about.title": "Who's behind this code",
-    "about.text": "I'm 18 years old, from João Pessoa (PB, Brazil), studying Computer Systems Analysis and Development at IFPB Campus Santa Rita. I spend most of my study time on the Java ecosystem, but I'm also comfortable with Python, web development and mobile development with React Native. I work on extension and innovation projects using agile methodologies, and I care about what's under the hood: clean architecture, SOLID principles, and software that ages well.",
+    "about.text": "I'm from João Pessoa (PB, Brazil), studying Computer Systems Analysis and Development at IFPB Campus Santa Rita. I spend most of my study time on the Java ecosystem, but I'm also comfortable with Python, web development and mobile development with React Native. I work on extension and innovation projects using agile methodologies, and I care about what's under the hood: clean architecture, SOLID principles, and software that ages well.",
     "about.fact1.label": "Location",
     "about.fact1.value": "João Pessoa, PB — Brazil",
     "about.fact2.label": "Education",
@@ -126,72 +128,6 @@ const translations = {
     "contact.title": "Let's talk?",
     "contact.text": "I'm looking for new opportunities in the field. If you have a project, an opening, or just want to talk about Java and React Native, reach out.",
 
-    "footer.note": "Built with HTML, CSS and JS — no frameworks."
+    "footer.note": "Built with React, TypeScript and Vite.",  
   }
 };
-
-// Toggle de Linguagem
-
-const STORAGE_KEY = "portfolio-lang";
-let currentLang = localStorage.getItem(STORAGE_KEY) || "pt";
-
-function applyLanguage(lang) {
-  const dict = translations[lang];
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    if (dict[key]) el.textContent = dict[key];
-  });
-  document.documentElement.setAttribute("lang", lang === "pt" ? "pt-BR" : "en");
-  document.getElementById("langValue").textContent = lang;
-  localStorage.setItem(STORAGE_KEY, lang);
-  currentLang = lang;
-}
-
-document.getElementById("langToggle").addEventListener("click", () => {
-  applyLanguage(currentLang === "pt" ? "en" : "pt");
-});
-
-applyLanguage(currentLang);
-
-// Nav do Mobile
-
-const navBurger = document.getElementById("navBurger");
-const navLinks = document.getElementById("navLinks");
-
-navBurger.addEventListener("click", () => {
-  const isOpen = navLinks.classList.toggle("open");
-  navBurger.setAttribute("aria-expanded", isOpen);
-});
-
-navLinks.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("open");
-    navBurger.setAttribute("aria-expanded", "false");
-  });
-});
-
-// Ano Rodapé
-
-document.getElementById("year").textContent = new Date().getFullYear();
-
-// Scroll Reveal 
-
-document.querySelectorAll(".stagger-group").forEach((group) => {
-  group.querySelectorAll(".reveal").forEach((el, i) => {
-    el.style.setProperty("--i", i);
-  });
-});
-
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
-);
-
-document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
