@@ -33,25 +33,47 @@ Site pessoal em formato *single page*, com navegação por âncoras entre as se�
 
 ```
 portfolio/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml        # Deploy automático no GitHub Pages
 ├── public/
 │   └── assets/
 │       ├── davi.png          # Foto de perfil
-│       └── logo.svg          # Favicon
+│       └── favicon.svg       # Favicon
 ├── src/
 │   ├── components/
-│   │   ├── Header.tsx        # Navegação, toggle de idioma e menu mobile
-│   │   ├── Hero.tsx
-│   │   ├── About.tsx
-│   │   ├── Experience.tsx
-│   │   ├── Projects.tsx
-│   │   ├── Skills.tsx
-│   │   ├── Contact.tsx
-│   │   └── Footer.tsx
+│   │   ├── Header/           # Navegação, toggle de idioma e menu mobile
+│   │   │   ├── index.tsx
+│   │   │   └── style.css
+│   │   ├── Hero/
+│   │   │   ├── index.tsx
+│   │   │   └── style.css
+│   │   ├── About/
+│   │   │   ├── index.tsx
+│   │   │   └── style.css
+│   │   ├── Experience/
+│   │   │   ├── index.tsx
+│   │   │   └── style.css
+│   │   ├── Projects/
+│   │   │   ├── index.tsx
+│   │   │   └── style.css
+│   │   ├── Skills/
+│   │   │   ├── index.tsx
+│   │   │   └── style.css
+│   │   ├── Contact/
+│   │   │   ├── index.tsx
+│   │   │   └── style.css
+│   │   └── Footer/
+│   │       ├── index.tsx
+│   │       └── style.css
 │   ├── data/
 │   │   └── translations.ts   # Textos em PT/EN
+│   ├── styles/
+│   │   ├── tokens.css        # Variáveis, reset, animações
+│   │   └── layout.css        # Seções, botões e tags compartilhados
 │   ├── App.tsx               # Estado de idioma e animações de scroll
 │   ├── main.tsx
-│   └── index.css             # Design system e estilos
+│   └── vite-env.d.ts         # Tipos do Vite
 ├── index.html
 ├── vite.config.ts
 ├── package.json
