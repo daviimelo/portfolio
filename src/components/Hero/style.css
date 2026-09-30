@@ -1,0 +1,87 @@
+.hero {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 96px 24px 110px;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(40px, 6vw, 68px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.hero-role {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--ink-soft);
+  margin-bottom: 22px;
+}
+
+.hero-intro {
+  font-size: 17px;
+  color: var(--ink-soft);
+  max-width: 46ch;
+  margin-bottom: 36px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hero-photo-frame {
+  position: relative;
+  aspect-ratio: 1 / 1.08;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-raised);
+}
+.hero-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  filter: grayscale(45%) contrast(1.02);
+  transition: filter 0.4s ease;
+}
+.hero-photo-frame:hover img { filter: grayscale(0%); }
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 64px 1fr;
+    grid-template-areas:
+      "avatar eyebrow"
+      "avatar role"
+      "name   name"
+      "intro  intro"
+      "cta    cta";
+    column-gap: 16px;
+    row-gap: 4px;
+    padding: 48px 20px 56px;
+  }
+
+  .hero-text { display: contents; }
+
+  .hero-photo { grid-area: avatar; width: 64px; align-self: center; }
+  .hero-photo-frame { aspect-ratio: 1 / 1; border-radius: 50%; }
+  .hero-photo-frame img { object-position: center; filter: none; }
+
+  .hero-text .eyebrow { grid-area: eyebrow; align-self: end; margin-bottom: 2px; }
+  .hero-role { grid-area: role; align-self: start; margin-bottom: 0; font-size: 16.5px; }
+  .hero-name { grid-area: name; margin-top: 22px; margin-bottom: 8px; font-size: clamp(38px, 11vw, 48px); }
+  .hero-intro { grid-area: intro; margin-top: 14px; font-size: 17.5px; }
+  .hero-cta { grid-area: cta; margin-top: 4px; }
+}
+
+@media (max-width: 760px) {
+  .hero { padding: 40px 20px 72px; }
+}

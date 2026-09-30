@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Language } from '../data/translations';
+import { Language } from '../../data/translations';
+import "./style.css"
 
 interface HeaderProps {
   lang: Language;

@@ -1,3 +1,5 @@
+import './style.css';
+
 interface SectionProps { t: Record<string, string>; }
 
 export default function About({ t }: SectionProps) {

@@ -8,7 +8,6 @@ import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { translations, Language } from './data/translations';
-import './index.css';
 
 export default function App() {
   const [lang, setLang] = useState<Language>(
